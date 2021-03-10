@@ -18,9 +18,9 @@
 
         <h1 class="adduser">Add Users</h1>
         <form action="addusers" method="POST">
-            <input type="email" class="details" name="email ">
-            <input type="text" class="details" name="fname ">
-            <input type="text" class="details" name="lname ">
+            <input type="email" class="details" name="email">
+            <input type="text" class="details" name="fname">
+            <input type="text" class="details" name="lname">
             <input type="password" class="details" name="password">
 
             <select name="domain" class="details">
@@ -31,8 +31,8 @@
             </select>
 
             <input type="submit" value="Save" class="save">
-
         </form>
+        
 
 
         <h1 class="ManageUsers">Manage Users</h1>
@@ -48,6 +48,20 @@
             </tr>
         </table>
 
-
+        <h1 class="edituser">Edit Users</h1>
+      
+        <form action="edituser" method="post">
+           <input type="email" class="details" name="email" value=${"users.email"}>
+            <input type="text" class="details" name="fname" value=${"users.fname"}>
+            <input type="text" class="details" name="lname" value=${"users.lanme"}>
+            <input type="password" class="details" name="password" value=${"users.password"}> 
+        
+            <!-- if/else what user company they edit
+      
+        
+      <-->
+        
+        
+            
     </body>
 </html>
