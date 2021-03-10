@@ -19,8 +19,8 @@ public class UserServices {
         User user = userDB.getUser(email);
         
         // return a note only if the owner of that note is the email address
-        if (note.getOwner().equals(email)) {
-            return note;
+        if (user.getEmail().equals(email)) {
+            return user;
         } else {
             return null;
         }    
