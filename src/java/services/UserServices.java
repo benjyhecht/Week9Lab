@@ -7,7 +7,7 @@ package services;
 
 /**
  *
- * @author 468181
+ * @author Diego Weidle Rost
  */
 public class UserServices {
     
