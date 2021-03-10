@@ -5,6 +5,7 @@
  */
 package services;
 import models.User;
+import dataaccess.UserDB;
 import java.util.List;
 
 /**
@@ -13,8 +14,16 @@ import java.util.List;
  */
 public class UserServices {
     
-    public UserServices() {
+    public User getUser(String email) throws Exception {
+        UserDB userDB = new UserDB();
+        User user = userDB.getUser(email);
         
+        // return a note only if the owner of that note is the email address
+        if (note.getOwner().equals(email)) {
+            return note;
+        } else {
+            return null;
+        }    
     }
     
     public List<User> getAllUsers(){
