@@ -12,23 +12,27 @@ import java.io.Serializable;
  * @author 468181
  */
 public class Role implements Serializable{
-    private String role;
+
+    public static void add(Role role) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    private String userRole;
     private int roleID;
 
     public Role() {
     }
 
-    public Role(int roleID, String role) {
+    public Role(int roleID, String userRole) {
         this.roleID = roleID;
-        this.role = role;
+        this.userRole = userRole;
     }
 
     public String getRole() {
-        return role;
+        return userRole;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRole(String userRole) {
+        this.userRole = userRole;
     }
 
     public int getRoleID() {
