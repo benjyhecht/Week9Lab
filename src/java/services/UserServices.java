@@ -4,11 +4,22 @@
  * and open the template in the editor.
  */
 package services;
+import models.User;
+import java.util.List;
 
 /**
  *
  * @author Diego Weidle Rost
  */
 public class UserServices {
+    
+    public UserServices() {
+        
+    }
+    
+    public List<User> getAllUsers(){
+        
+        return null;
+    }
     
 }
