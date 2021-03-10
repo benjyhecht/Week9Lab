@@ -9,9 +9,45 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Week 8 Lab</title>
     </head>
+
     <body>
-        <h1>Hello World!</h1>
+
+
+
+        <h1 class="adduser">Add Users</h1>
+        <form action="addusers" method="POST">
+            <input type="email" class="details" name="email ">
+            <input type="text" class="details" name="fname ">
+            <input type="text" class="details" name="lname ">
+            <input type="password" class="details" name="password">
+
+            <select name="domain" class="details">
+                <option value="Company Admin">Company Admin</option>
+                <option value="System Admin">System Admin</option>
+                <option value="Regular Admin">Regular Admin</option>
+
+            </select>
+
+            <input type="submit" value="Save" class="save">
+
+        </form>
+
+
+        <h1 class="ManageUsers">Manage Users</h1>
+
+        <table style="width:50%">
+            <tr>
+                <th>Email</th>
+                <th>First Name</th>
+                <th>Last name</th>
+                <th>Role </th>
+                <th>Edit </th>
+                <th>Delete</th>
+            </tr>
+        </table>
+
+
     </body>
 </html>
