@@ -24,6 +24,15 @@ public class User implements Serializable {
         
     }
 
+    public User(String email, String firstName, String lastName, String password, int active, int role) {
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.active = active;
+        this.role = role;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -56,7 +65,7 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public int getActive() {
+    public int isActive() {
         return active;
     }
 
