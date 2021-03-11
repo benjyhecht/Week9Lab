@@ -56,6 +56,10 @@
             <input type="text" class="details" name="fname" value=${users.fname}>
             <input type="text" class="details" name="lname" value=${users.lanme}>
             <input type="password" class="details" name="password" value=${users.password}>
+            <input type="submit" value="Save">
+            <input type="hidden" name="action" value="save">
+            <input type="submit" value="Cancel">
+            <input type="hidden" name="action" value="cancel">
         </c:if>
 
             <!-- if/else what user company they edit
