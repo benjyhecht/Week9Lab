@@ -7,6 +7,8 @@ package services;
 import models.User;
 import dataaccess.UserDB;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,11 +28,37 @@ public class UserServices {
         }    
     }
     
-    public boolean updateUser(String email, String firstName, String lastName, String password, String role, boolean active) {
+    public boolean updateUser(String email, String firstName, String lastName, String password, int role, int active) {
+        User user = new User(email, firstName, lastName, password, active, role);
+        UserDB userDB = new UserDB();
+        try {
+            userDB.insert(user);
+            return true;
+        } catch (Exception ex) {
+            Logger.getLogger(UserServices.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return false;
     }
     
-    public boolean addUser(String email, String firstName, String lastName, String password, String role, boolean active){
+    public boolean addUser(String email, String firstName, String lastName, String password, int role, int active){
+        List<User> users = getAllUsers();
+        UserDB userDB;
+        User user;
+        
+        for (User userToCheck : users) {
+            if (userToCheck.getEmail().equals(email)) {
+                return false;
+            } else {
+                userDB = new UserDB();
+                user = new User(email, firstName, lastName, password, active, role);
+                try {
+                    userDB.insert(user);
+                } catch (Exception ex) {
+                    Logger.getLogger(UserServices.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                return true; 
+            }
+        }
         return false;
     }
     
@@ -39,7 +67,14 @@ public class UserServices {
     }
     
     public List<User> getAllUsers(){
-        
+        UserDB userDB = new UserDB();
+        List<User> users;
+        try {
+            users = userDB.getAll();
+            return users;
+        } catch (Exception ex) {
+            Logger.getLogger(UserServices.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return null;
     }
     
