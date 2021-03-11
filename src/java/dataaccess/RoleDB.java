@@ -47,20 +47,20 @@ public class RoleDB {
         return roles;
     }
     
-    public String getRole (int role) {
+    public int getRole (String role) {
         ConnectionPool cp = ConnectionPool.getInstance();
         Connection con = cp.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         
-        String sql = "SELECT role_name FROM role WHERE role_id=?";
+        String sql = "SELECT role_id FROM role WHERE role_name=?";
         
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1, role);
+            ps.setString(1, role);
             rs = ps.executeQuery();
 
-            return rs.getString(2);
+            return rs.getInt(1);
             
         } catch (SQLException ex) {
             Logger.getLogger(RoleDB.class.getName()).log(Level.SEVERE, null, ex);
@@ -69,6 +69,6 @@ public class RoleDB {
             DBUtil.closePreparedStatement(ps);
             cp.freeConnection(con);
         }
-        return null;
+        return 0;
     }
 }

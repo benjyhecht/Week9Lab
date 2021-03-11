@@ -31,9 +31,9 @@ public class UserServices {
         }    
     }
     
-    public boolean updateUser(String email, String firstName, String lastName, String password, int role, int active) {
+    public boolean updateUser(String email, String firstName, String lastName, String password, String roleName, int active) {
         //TODO validation
-        String roleName = roleDB.getRole(role);
+        int role = roleDB.getRole(roleName);
         User user = new User(email, firstName, lastName, password, active, role, roleName);
         UserDB userDB = new UserDB();
         try {
@@ -45,7 +45,7 @@ public class UserServices {
         return false;
     }
     
-    public boolean addUser(String email, String firstName, String lastName, String password, int role, int active){
+    public boolean addUser(String email, String firstName, String lastName, String password, String roleName, int active){
         //TODO validation
         List<User> users = getAllUsers();
         UserDB userDB;
@@ -56,7 +56,7 @@ public class UserServices {
                 return false;
             } else {
                 userDB = new UserDB();
-                String roleName = roleDB.getRole(role);
+                int role = roleDB.getRole(roleName);
                 user = new User(email, firstName, lastName, password, active, role, roleName);
                 try {
                     userDB.insert(user);
