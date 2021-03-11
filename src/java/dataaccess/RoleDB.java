@@ -20,7 +20,7 @@ import models.Role;
  * @author 468181
  */
 public class RoleDB {
-    public List<Role> getAll(int role) throws Exception
+    public List<Role> getAll() throws Exception
     {
         List<Role> roles = new ArrayList<>();
         ConnectionPool cp = ConnectionPool.getInstance();
@@ -28,11 +28,10 @@ public class RoleDB {
         PreparedStatement ps = null;
         ResultSet rs = null;
         
-        String sql = "SELECT * FROM role WHERE role=?";
+        String sql = "SELECT * FROM role";
         
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1, role);
             rs = ps.executeQuery();
             while (rs.next()) {
                 int roleId = rs.getInt(1);
@@ -54,7 +53,7 @@ public class RoleDB {
         PreparedStatement ps = null;
         ResultSet rs = null;
         
-        String sql = "SELECT role_name FROM role WHERE role=?";
+        String sql = "SELECT role_name FROM role WHERE role_id=?";
         
         try {
             ps = con.prepareStatement(sql);
