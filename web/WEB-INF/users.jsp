@@ -16,26 +16,6 @@
     <body>
 
 
-
-        <h1 class="adduser">Add Users</h1>
-        <form action="addusers" method="POST">
-            <input type="email" class="details" name="email">
-            <input type="text" class="details" name="fname">
-            <input type="text" class="details" name="lname">
-            <input type="password" class="details" name="password">
-
-            <select name="domain" class="details">
-                <option value="Company Admin">Company Admin</option>
-                <option value="System Admin">System Admin</option>
-                <option value="Regular Admin">Regular Admin</option>
-
-            </select>
-
-            <input type="submit" value="Save" class="save">
-        </form>
-        
-
-
         <h1 class="ManageUsers">Manage Users</h1>
 
         <table style="width:50%">
@@ -49,20 +29,42 @@
             </tr>
         </table>
 
-        <h1 class="edituser">Edit Users</h1>
-      
-        <form action="edituser" method="post">
-           <input type="email" class="details" name="email" value=${"users.email"}>
-            <input type="text" class="details" name="fname" value=${"users.fname"}>
-            <input type="text" class="details" name="lname" value=${"users.lanme"}>
-            <input type="password" class="details" name="password" value=${"users.password"}> 
+        <h1 class="adduser">Add Users</h1>
+        <form action="addusers" method="POST">
+            <input type="email" class="details" name="email" placeholder="Email">
+            <input type="text" class="details" name="fname" placeholder="First Name">
+            <input type="text" class="details" name="lname" placeholder="Last Name">
+            <input type="password" class="details" name="password" placeholder="Password">
+
+            <select name="domain" class="details">
+                <option value="Company Admin">Company Admin</option>
+                <option value="System Admin">System Admin</option>
+                <option value="Regular Admin">Regular Admin</option>
+
+            </select>
+
+            <input type="submit" value="Save" class="save">
+        </form>
+
+
+
         
+        <h1 class="edituser">Edit Users</h1>
+        <c:if test="${selectedUser == true}">
+            <p>You have successfully logged out.</p>
+        </c:if>
+        <form action="edituser" method="post">
+            <input type="email" class="details" name="email" value=${users.email}>
+            <input type="text" class="details" name="fname" value=${users.fname}>
+            <input type="text" class="details" name="lname" value=${users.lanme}>
+            <input type="password" class="details" name="password" value=${users.password}> 
+
             <!-- if/else what user company they edit
       
         
       <-->
-        
-        
-            
-    </body>
-</html>
+
+
+
+            </body>
+            </html>
