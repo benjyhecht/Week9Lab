@@ -97,7 +97,7 @@
             </form>
             </c:if>
   
-            ${message}
+            <br> ${message}
 
     </body>
 </html>
