@@ -16,7 +16,7 @@
     <body>
 
 
-        <h1 class="ManageUsers">Manage Users</h1>
+       <h1 class="ManageUsers">Manage Users</h1>
 
         <table style="width:50%">
             <tr>
@@ -26,6 +26,30 @@
                 <th>Role </th>
                 <th>Edit </th>
                 <th>Delete</th>
+            </tr>
+
+            <tr>
+
+                <c:forEach var="manageuser" items="a">
+
+                    <td>
+                        <form method="GET" action="users"
+                              <input type="hidden" value="edit" name="action">
+                            <input type="submit" name="manage">
+                        </form>
+                    </td> 
+                    
+                    <td>
+                        
+                        <form method="GET"  action="users">
+                               <input type="hidden" value="Delete" name="action">
+                            <input type="submit" name="Delete">
+                            
+                        </form>
+                    </td>
+
+                </c:forEach>
+
             </tr>
         </table>
         <c:if test="${selectedUser == null}">
