@@ -71,7 +71,7 @@
 
                 </select>
 
-                <input type="submit" value="Save" class="save">
+                <input type="submit" value="add" class="save">
             </form>
         </c:if>
 
@@ -96,6 +96,7 @@
             </form>
             </c:if>
   
+            ${message}
 
     </body>
 </html>
