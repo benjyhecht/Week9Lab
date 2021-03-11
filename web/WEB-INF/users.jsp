@@ -28,29 +28,29 @@
                 <th>Delete</th>
             </tr>
 
-            <tr>
-
-                <c:forEach var="manageuser" items="a">
-
-                    <td>
-                        <form method="GET" action="users">
-                              <input type="hidden" value="edit" name="action">
-                            <input type="submit" name="manage">
-                        </form>
-                    </td> 
+            <c:forEach var="user" items="${users}">
+                <tr>
+                <tc>${user.email}</tc>
+                <tc>${user.firstName}</tc>
+                <tc>${user.lastName}</tc>
+                <tc>${user.password}</tc>
+                <tc> <form method="POST" action="users">
+                        <input type="hidden" action="edit" name="${user.email}">
+                        <input type="submit" value="Edit">
+                    </form>
+                
+                </tc>
+                <tc>
                     
-                    <td>
-                        
-                        <form method="GET"  action="users">
-                               <input type="hidden" value="Delete" name="action">
-                            <input type="submit" name="Delete">
-                            
-                        </form>
-                    </td>
-
-                </c:forEach>
-
+                    <form method="POST" action="users">
+                        <input type="hidden" action="delete" name="${user.email}">
+                        <input type="submit" value="Edit">
+                    </form>
+                
+                </tc>
+                <tc>Delete</tc>
             </tr>
+        </c:forEach>
         </table>
         <c:if test="${selectedUser == null}"> 
         <h1 class="adduser">Add Users</h1>
