@@ -37,7 +37,10 @@ public class UserServlet extends HttpServlet {
         String lastName = request.getParameter("lname");
         String password = request.getParameter("password");
         String role = request.getParameter("domain");
-        Boolean active = request.getParameter("active").equals("on");
+        int active = 0;
+        if (request.getParameter("active").equals("on")) {
+            active = 1;
+        };
 
         String action = request.getParameter("action");
 
@@ -51,22 +54,22 @@ public class UserServlet extends HttpServlet {
                     selectedUser = us.getUser(email);
                     break;
                 case "add":
-                    if (us.addUser(email, firstName, lastName, password, role, active)) {
-
+                    if (us.addUser(email, firstName, lastName, password, Integer.parseInt(role), active)) {
+                        message = "User added";
                     } else {
                         message = "Could not add new user";
                     }
                     break;
                 case "save":
-                    if (us.updateUser(email, firstName, lastName, password, role, active)) {
-
+                    if (us.updateUser(email, firstName, lastName, password, Integer.parseInt(role), active)) {
+                        message = "User updated";
                     } else {
                         message = "Could not update user";
                     }
                     break;
                 case "delete":
                     if (us.deleteUser(email)) {
-
+                        message = "User deleted";
                     } else {
                         message = "Could not delete user";
                     }
@@ -86,10 +89,10 @@ public class UserServlet extends HttpServlet {
     protected void displayMainPage(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         UserServices us = new UserServices();
-        List users = us.getAllUsers();
+        List<User> users = us.getAllUsers();
 
         RoleServices rs = new RoleServices();
-        List roles = rs.getAllRoles();
+        List<String> roles = rs.getAllRoles();
 
         request.setAttribute("users", users);
         request.setAttribute("roles", roles);
