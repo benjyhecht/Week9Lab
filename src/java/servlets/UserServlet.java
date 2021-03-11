@@ -38,7 +38,7 @@ public class UserServlet extends HttpServlet {
         String password = request.getParameter("password");
         String role = request.getParameter("domain");
         int active = 0;
-        if (request.getParameter("active").equals("on")) {
+        if (request.getParameter("active") != null && request.getParameter("active").equals("on")) {
             active = 1;
         };
 
