@@ -28,7 +28,7 @@
                 <th>Delete</th>
             </tr>
         </table>
-
+        <c:if test="${selectedUser == null}">
         <h1 class="adduser">Add Users</h1>
         <form action="addusers" method="POST">
             <input type="email" class="details" name="email" placeholder="Email">
@@ -45,19 +45,18 @@
 
             <input type="submit" value="Save" class="save">
         </form>
-
-
-
-        
-        <h1 class="edituser">Edit Users</h1>
-        <c:if test="${selectedUser == true}">
-            <p>You have successfully logged out.</p>
         </c:if>
-        <form action="edituser" method="post">
+
+
+        <c:if test="${selectedUser != null}">
+        <h1 class="edituser">Edit Users</h1>
+        
+            <form action="edituser" method="post">
             <input type="email" class="details" name="email" value=${users.email}>
             <input type="text" class="details" name="fname" value=${users.fname}>
             <input type="text" class="details" name="lname" value=${users.lanme}>
-            <input type="password" class="details" name="password" value=${users.password}> 
+            <input type="password" class="details" name="password" value=${users.password}>
+        </c:if>
 
             <!-- if/else what user company they edit
       
