@@ -54,14 +54,14 @@ public class UserServlet extends HttpServlet {
                     selectedUser = us.getUser(email);
                     break;
                 case "add":
-                    if (us.addUser(email, firstName, lastName, password, active, Integer.parseInt(role))) {
+                    if (us.addUser(email, firstName, lastName, password, role, active)) {
                         message = "User added";
                     } else {
                         message = "Could not add new user";
                     }
                     break;
                 case "save":
-                    if (us.updateUser(email, firstName, lastName, password, active, Integer.parseInt(role))) {
+                    if (us.updateUser(email, firstName, lastName, password, role, active)) {
                         message = "User updated";
                     } else {
                         message = "Could not update user";
@@ -73,6 +73,7 @@ public class UserServlet extends HttpServlet {
                     } else {
                         message = "Could not delete user";
                     }
+                    break;
                 default:
                     break;
             }
