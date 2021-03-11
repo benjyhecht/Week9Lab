@@ -31,10 +31,10 @@
 
         <h1 class="adduser">Add Users</h1>
         <form action="addusers" method="POST">
-            <input type="email" class="details" name="email">
-            <input type="text" class="details" name="fname">
-            <input type="text" class="details" name="lname">
-            <input type="password" class="details" name="password">
+            <input type="email" class="details" name="email" placeholder="Email">
+            <input type="text" class="details" name="fname" placeholder="First Name">
+            <input type="text" class="details" name="lname" placeholder="Last Name">
+            <input type="password" class="details" name="password" placeholder="Password">
 
             <select name="domain" class="details">
                 <option value="Company Admin">Company Admin</option>
