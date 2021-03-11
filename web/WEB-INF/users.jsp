@@ -34,7 +34,7 @@
                     <td>${user.email}</td>
                     <td>${user.firstName}</td>
                     <td>${user.lastName}</td>
-                    <td>${user.password}</td>
+                    <td>${user.roleName}</td>
                     <td> <form method="POST" action="user">
                             <input type="hidden" name="action" value="edit">
                             <input type="submit" value="edit">

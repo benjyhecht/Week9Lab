@@ -94,10 +94,8 @@ public class UserServices {
     
     public List<User> getAllUsers(){
         UserDB userDB = new UserDB();
-        List<User> users;
         try {
-            users = userDB.getAll();
-            return users;
+            return userDB.getAll();
         } catch (Exception ex) {
             Logger.getLogger(UserServices.class.getName()).log(Level.SEVERE, null, ex);
         }

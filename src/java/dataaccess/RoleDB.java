@@ -59,10 +59,9 @@ public class RoleDB {
             statement = connection.prepareStatement(querry);
             statement.setString(1, roleName);
             result = statement.executeQuery();
-            result.next();
-
-            return result.getInt(1);
-            
+            if (result.next()) {
+                return result.getInt(1);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(RoleDB.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
