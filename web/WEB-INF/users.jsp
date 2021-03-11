@@ -48,14 +48,16 @@
 
 
 
-
+        
         <h1 class="edituser">Edit Users</h1>
-
+        <c:if test="${selectedUser == true}">
+            <p>You have successfully logged out.</p>
+        </c:if>
         <form action="edituser" method="post">
-            <input type="email" class="details" name="email" value=${"users.email"}>
-            <input type="text" class="details" name="fname" value=${"users.fname"}>
-            <input type="text" class="details" name="lname" value=${"users.lanme"}>
-            <input type="password" class="details" name="password" value=${"users.password"}> 
+            <input type="email" class="details" name="email" value=${users.email}>
+            <input type="text" class="details" name="fname" value=${users.fname}>
+            <input type="text" class="details" name="lname" value=${users.lanme}>
+            <input type="password" class="details" name="password" value=${users.password}> 
 
             <!-- if/else what user company they edit
       
