@@ -32,7 +32,6 @@ public class UserDB {
         
         try {
             statement = connection.prepareStatement(querry);
-//            statement.setString(1, owner);
             result = statement.executeQuery();
             while (result.next()) {
                 String email = result.getString(1);
@@ -69,7 +68,7 @@ public class UserDB {
                 String lastName = result.getString(4);
                 String password = result.getString(5);
                 int role = result.getInt(6);
-                String roleName = result.getString(7);
+                String roleName = roleDB.getRole(role);
                 user = new User(email, firstName, lastName, password, active, role, roleName);
             }
         } finally {
@@ -105,17 +104,15 @@ public class UserDB {
     public void update(User user) throws Exception {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
-        querry = "UPDATE user SET email=?, active=?, first_name=?, last_name=?, password=?, role=? WHERE email=?";
+        querry = "UPDATE user SET first_name=?, last_name=?, password=? WHERE email=?";
         
         try {
             statement = connection.prepareStatement(querry);
             
-            statement.setString(1, user.getEmail());
-            statement.setInt(2, user.isActive());
-            statement.setString(3, user.getFirstName());
-            statement.setString(4, user.getLastName());
-            statement.setString(5, user.getPassword());
-            statement.setInt(6, user.getRole());
+            statement.setString(1, user.getFirstName());
+            statement.setString(2, user.getLastName());
+            statement.setString(3, user.getPassword());
+            statement.setString(4, user.getEmail());
             
             statement.executeUpdate();
         } finally {

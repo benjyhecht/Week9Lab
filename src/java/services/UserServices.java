@@ -72,13 +72,13 @@ public class UserServices {
     public boolean deleteUser(String email) {
         List<User> users = getAllUsers();
         UserDB userDB;
-        User user;
+        User user = new User();
+        user.setEmail(email);
         
         for (User userToCheck : users) {
             if (userToCheck.getEmail().equals(email)) {
                 userDB = new UserDB();
-                user = new User();
-                user.setEmail(email);
+                
                 try {
                     userDB.delete(user);
                     return true;

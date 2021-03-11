@@ -77,10 +77,10 @@ public class RoleDB {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         
-        String sql = "SELECT role_name FROM role WHERE role_id=?";
+        querry = "SELECT role_name FROM role WHERE role_id=?";
         
         try {
-            statement = connection.prepareStatement(sql);
+            statement = connection.prepareStatement(querry);
             statement.setInt(1, role);
             result = statement.executeQuery();
             result.next();
