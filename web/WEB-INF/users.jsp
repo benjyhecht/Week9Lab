@@ -15,6 +15,18 @@
     <body>
 
 
+        <h1 class="ManageUsers">Manage Users</h1>
+
+        <table style="width:50%">
+            <tr>
+                <th>Email</th>
+                <th>First Name</th>
+                <th>Last name</th>
+                <th>Role </th>
+                <th>Edit </th>
+                <th>Delete</th>
+            </tr>
+        </table>
 
         <h1 class="adduser">Add Users</h1>
         <form action="addusers" method="POST">
@@ -32,36 +44,24 @@
 
             <input type="submit" value="Save" class="save">
         </form>
-        
 
 
-        <h1 class="ManageUsers">Manage Users</h1>
 
-        <table style="width:50%">
-            <tr>
-                <th>Email</th>
-                <th>First Name</th>
-                <th>Last name</th>
-                <th>Role </th>
-                <th>Edit </th>
-                <th>Delete</th>
-            </tr>
-        </table>
 
         <h1 class="edituser">Edit Users</h1>
-      
+
         <form action="edituser" method="post">
-           <input type="email" class="details" name="email" value=${"users.email"}>
+            <input type="email" class="details" name="email" value=${"users.email"}>
             <input type="text" class="details" name="fname" value=${"users.fname"}>
             <input type="text" class="details" name="lname" value=${"users.lanme"}>
             <input type="password" class="details" name="password" value=${"users.password"}> 
-        
+
             <!-- if/else what user company they edit
       
         
       <-->
-        
-        
-            
-    </body>
-</html>
+
+
+
+            </body>
+            </html>
