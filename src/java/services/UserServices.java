@@ -28,11 +28,12 @@ public class UserServices {
         }    
     }
     
-    public boolean updateUser(String email, String firstName, String lastName, String password, int role, int active) {
-        User user = new User(email, firstName, lastName, password, active, role);
+    public boolean updateUser(String email, String firstName, String lastName, String password, int role, int active, String roleName) {
+        //TODO validation
+        User user = new User(email, firstName, lastName, password, active, role, roleName);
         UserDB userDB = new UserDB();
         try {
-            userDB.insert(user);
+            userDB.update(user);
             return true;
         } catch (Exception ex) {
             Logger.getLogger(UserServices.class.getName()).log(Level.SEVERE, null, ex);
@@ -40,7 +41,8 @@ public class UserServices {
         return false;
     }
     
-    public boolean addUser(String email, String firstName, String lastName, String password, int role, int active){
+    public boolean addUser(String email, String firstName, String lastName, String password, int role, int active, String roleName){
+        //TODO validation
         List<User> users = getAllUsers();
         UserDB userDB;
         User user;
@@ -50,7 +52,7 @@ public class UserServices {
                 return false;
             } else {
                 userDB = new UserDB();
-                user = new User(email, firstName, lastName, password, active, role);
+                user = new User(email, firstName, lastName, password, active, role, roleName);
                 try {
                     userDB.insert(user);
                 } catch (Exception ex) {
@@ -63,6 +65,25 @@ public class UserServices {
     }
     
     public boolean deleteUser(String email) {
+        List<User> users = getAllUsers();
+        UserDB userDB;
+        User user;
+        
+        for (User userToCheck : users) {
+            if (userToCheck.getEmail().equals(email)) {
+                userDB = new UserDB();
+                user = new User();
+                user.setEmail(email);
+                try {
+                    userDB.delete(user);
+                    return true;
+                } catch (Exception ex) {
+                    Logger.getLogger(UserServices.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                return false;
+            }
+        }    
         return false;
     }
     
@@ -77,5 +98,4 @@ public class UserServices {
         }
         return null;
     }
-    
 }
