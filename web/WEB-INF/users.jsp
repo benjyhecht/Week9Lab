@@ -58,7 +58,7 @@
         </table>
         <c:if test="${selectedUser == null}"> 
             <h1 class="adduser">Add Users</h1>
-            <form action="addusers" method="POST">
+            <form action="user" method="POST">
                 <input type="email" class="details" name="email" placeholder="Email">
                 <input type="text" class="details" name="fname" placeholder="First Name">
                 <input type="text" class="details" name="lname" placeholder="Last Name">
@@ -72,6 +72,7 @@
                 </select>
 
                 <input type="submit" value="add" class="save">
+                <input type="hidden" value="add" name="action">
             </form>
         </c:if>
 
