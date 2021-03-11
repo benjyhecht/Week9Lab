@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Week 8 Lab</title>
+        <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
     </head>
 
     <body>

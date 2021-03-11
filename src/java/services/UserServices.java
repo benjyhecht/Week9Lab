@@ -5,6 +5,7 @@
  */
 package services;
 import models.User;
+import dataaccess.UserDB;
 import java.util.List;
 
 /**
@@ -13,8 +14,28 @@ import java.util.List;
  */
 public class UserServices {
     
-    public UserServices() {
+    public User getUser(String email) throws Exception {
+        UserDB userDB = new UserDB();
+        User user = userDB.getUser(email);
         
+        // return a note only if the owner of that note is the email address
+        if (user.getEmail().equals(email)) {
+            return user;
+        } else {
+            return null;
+        }    
+    }
+    
+    public boolean updateUser(String email, String firstName, String lastName, String password, String role, boolean active) {
+        return false;
+    }
+    
+    public boolean addUser(String email, String firstName, String lastName, String password, String role, boolean active){
+        return false;
+    }
+    
+    public boolean deleteUser(String email) {
+        return false;
     }
     
     public List<User> getAllUsers(){

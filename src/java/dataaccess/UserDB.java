@@ -51,6 +51,32 @@ public class UserDB {
         }
         return users;
     }
+    
+    public User getUser(String email) throws Exception {
+        User user = null;
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        querry = "SELECT * FROM user WHERE email=?";
+        
+        try {
+            statement = connection.prepareStatement(querry);
+            statement.setString(1, email);
+            result = statement.executeQuery();
+            if (result.next()) {
+                int active = result.getInt(2);
+                String firstName = result.getString(3);
+                String lastName = result.getString(4);
+                String password = result.getString(5);
+                int role = result.getInt(6);
+                user = new User(email, firstName, lastName, password, active, role);
+            }
+        } finally {
+            DBUtil.closeResultSet(result);
+            DBUtil.closePreparedStatement(statement);
+            pool.freeConnection(connection);
+        }
+        return user;
+    }
 
     public void insert(User user) throws Exception {
         ConnectionPool pool = ConnectionPool.getInstance();
