@@ -21,6 +21,7 @@ public class UserDB {
     private String querry = "";
     PreparedStatement statement = null;
     ResultSet result = null;
+    RoleDB roleDB = new RoleDB();
     
     public List<User> getAll() throws Exception {
         List<User> users = new ArrayList<>();
@@ -40,7 +41,7 @@ public class UserDB {
                 String lastName = result.getString(4);
                 String password = result.getString(5);
                 int role = result.getInt(6);
-                String roleName = setRole(role);
+                String roleName = roleDB.getRole(role);
                 User user = new User(email, firstName, lastName, password, active, role, roleName);
                 users.add(user);
             }
@@ -68,7 +69,7 @@ public class UserDB {
                 String lastName = result.getString(4);
                 String password = result.getString(5);
                 int role = result.getInt(6);
-                String roleName = setRole(role);
+                String roleName = roleDB.getRole(role);
                 user = new User(email, firstName, lastName, password, active, role, roleName);
             }
         } finally {
@@ -136,17 +137,5 @@ public class UserDB {
             DBUtil.closePreparedStatement(statement);
             pool.freeConnection(connection);
         }
-    }
-    
-    private String setRole (int role) {
-        String roleName = null;
-        if (role >= 1 && role <= 3) {
-            switch (role) {
-                case 1: roleName = "system admin"; break;
-                case 2: roleName = "regular user"; break;
-                case 3: roleName = "company admin"; break;
-            }
-        }
-        return roleName;
     }
 }
