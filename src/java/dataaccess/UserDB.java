@@ -41,15 +41,16 @@ public class UserDB {
                 String password = result.getString(5);
                 int role = result.getInt(6);
                 String roleName = roleDB.getRole(role);
+                
                 User user = new User(email, firstName, lastName, password, active, role, roleName);
                 users.add(user);
             }
+            return users;
         } finally {
             DBUtil.closeResultSet(result);
             DBUtil.closePreparedStatement(statement);
             pool.freeConnection(connection);
         }
-        return users;
     }
     
     public User getUser(String email) throws Exception {
@@ -121,14 +122,14 @@ public class UserDB {
         }
     }
 
-    public void delete(User user) throws Exception {
+    public void delete(String email) throws Exception {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         querry = "DELETE FROM user WHERE email=?";
         
         try {
             statement = connection.prepareStatement(querry);
-            statement.setString(1, user.getEmail());
+            statement.setString(1, email);
             statement.executeUpdate();
         } finally {
             DBUtil.closePreparedStatement(statement);

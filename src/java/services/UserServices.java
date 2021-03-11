@@ -60,10 +60,10 @@ public class UserServices {
                 user = new User(email, firstName, lastName, password, active, role, roleName);
                 try {
                     userDB.insert(user);
+                    return true;
                 } catch (Exception ex) {
                     Logger.getLogger(UserServices.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                return true; 
             }
         }
         return false;
@@ -72,21 +72,19 @@ public class UserServices {
     public boolean deleteUser(String email) {
         List<User> users = getAllUsers();
         UserDB userDB;
-        User user = new User();
-        user.setEmail(email);
         
-        for (User userToCheck : users) {
-            if (userToCheck.getEmail().equals(email)) {
+        for (User user : users) {
+            System.out.println(user.getEmail()); //TESTING
+            if (user.getEmail().equals(email)) {
+                
                 userDB = new UserDB();
                 
                 try {
-                    userDB.delete(user);
+                    userDB.delete(email);
                     return true;
                 } catch (Exception ex) {
                     Logger.getLogger(UserServices.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } else {
-                return false;
             }
         }    
         return false;
