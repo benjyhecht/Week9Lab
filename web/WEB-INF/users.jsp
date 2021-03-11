@@ -35,17 +35,19 @@
                 <td>${user.firstName}</td>
                 <td>${user.lastName}</td>
                 <td>${user.password}</td>
-                <td> <form method="POST" action="users">
+                <td> <form method="POST" action="user">
                         <input type="hidden" name="action" value="edit">
                         <input type="submit" value="edit">
+                        <input type="hidden" name="email" value="${user.email}">
                     </form>
                  
                 </td>
                 <td>
                     
-                    <form method="POST" action="users">
+                    <form method="POST" action="user">
                         <input type="hidden" name=action value="delete">
                         <input type="submit" value="delete">
+                        <input type="hidden" name="email" value="${user.email}">
                     </form>
                 
                 </td>
