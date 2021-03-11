@@ -60,7 +60,7 @@ public class UserServlet extends HttpServlet {
                         message = "Could not add new user";
                     }
                     break;
-                case "Save":
+                case "save":
                     if (us.updateUser(email, firstName, lastName, password, active, Integer.parseInt(role))) {
                         message = "User updated";
                     } else {
