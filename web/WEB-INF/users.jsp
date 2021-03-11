@@ -16,7 +16,7 @@
     <body>
 
 
-       <h1 class="ManageUsers">Manage Users</h1>
+        <h1 class="ManageUsers">Manage Users</h1>
 
         <table style="width:50%">
             <tr>
@@ -29,73 +29,73 @@
             </tr>
 
             <c:forEach var="user" items="${users}">
-             
+
                 <tr>
-                <td>${user.email}</td>
-                <td>${user.firstName}</td>
-                <td>${user.lastName}</td>
-                <td>${user.password}</td>
-                <td> <form method="POST" action="user">
-                        <input type="hidden" name="action" value="edit">
-                        <input type="submit" value="edit">
-                        <input type="hidden" name="email" value="${user.email}">
-                    </form>
-                 
-                </td>
-                <td>
-                    
-                    <form method="POST" action="user">
-                        <input type="hidden" name=action value="delete">
-                        <input type="submit" value="delete">
-                        <input type="hidden" name="email" value="${user.email}">
-                    </form>
-                
-                </td>
-                <td>Delete</td>
+                    <td>${user.email}</td>
+                    <td>${user.firstName}</td>
+                    <td>${user.lastName}</td>
+                    <td>${user.password}</td>
+                    <td> <form method="POST" action="user">
+                            <input type="hidden" name="action" value="edit">
+                            <input type="submit" value="edit">
+                            <input type="hidden" name="email" value="${user.email}">
+                        </form>
+
+                    </td>
+                    <td>
+
+                        <form method="POST" action="user">
+                            <input type="hidden" name=action value="delete">
+                            <input type="submit" value="delete">
+                            <input type="hidden" name="email" value="${user.email}">
+                        </form>
+
+                    </td>
+                    <td>Delete</td>
                 </tr>
-            
-        </c:forEach>
+
+            </c:forEach>
         </table>
         <c:if test="${selectedUser == null}"> 
-        <h1 class="adduser">Add Users</h1>
-        <form action="addusers" method="POST">
-            <input type="email" class="details" name="email" placeholder="Email">
-            <input type="text" class="details" name="fname" placeholder="First Name">
-            <input type="text" class="details" name="lname" placeholder="Last Name">
-            <input type="password" class="details" name="password" placeholder="Password">
+            <h1 class="adduser">Add Users</h1>
+            <form action="addusers" method="POST">
+                <input type="email" class="details" name="email" placeholder="Email">
+                <input type="text" class="details" name="fname" placeholder="First Name">
+                <input type="text" class="details" name="lname" placeholder="Last Name">
+                <input type="password" class="details" name="password" placeholder="Password">
 
-            <select name="domain" class="details">
-                <option value="Company Admin">Company Admin</option>
-                <option value="System Admin">System Admin</option>
-                <option value="Regular Admin">Regular Admin</option>
+                <select name="domain" class="details">
+                    <option value="Company Admin">Company Admin</option>
+                    <option value="System Admin">System Admin</option>
+                    <option value="Regular Admin">Regular Admin</option>
 
-            </select>
+                </select>
 
-            <input type="submit" value="Save" class="save">
-        </form>
+                <input type="submit" value="Save" class="save">
+            </form>
         </c:if>
 
 
         <c:if test="${selectedUser != null}">
-        <h1 class="edituser">Edit Users</h1>
-        
-            <form action="edituser" method="post">
-            <input type="email" class="details" name="email" value=${selectedUser.email}>
-            <input type="text" class="details" name="fname" value=${selectedUser.fname}>
-            <input type="text" class="details" name="lname" value=${selectedUser.lanme}>
-            <input type="password" class="details" name="password" value=${selectedUser.password}>
-            <input type="submit" value="Save">
-            <input type="hidden" name="action" value="save">
-            <input type="submit" value="Cancel">
-            <input type="hidden" name="action" value="cancel">
-        </c:if>
+            <h1 class="edituser">Edit Users</h1>
 
-            <!-- if/else what user company they edit
-      
-        
-      <-->
+            <form action="user" method="post">
+                <input type="hidden" class="details" name="email" value=${selectedUser.email}>
+                <input type="text" class="details" name="fname" value=${selectedUser.firstName}>
+                <input type="text" class="details" name="lname" value=${selectedUser.lastName}>
+                <input type="password" class="details" name="password" value=${selectedUser.password}>
+                <input type="submit" value="save">
+                <input type="hidden" name="action" value="save">
+                
+            </form>
 
 
+            <form action="user" method="post">
+                <input type="submit" value="cancel">
+                <input type="hidden" name="action" value="cancel">
+            </form>
+            </c:if>
+  
 
-            </body>
-            </html>
+    </body>
+</html>
