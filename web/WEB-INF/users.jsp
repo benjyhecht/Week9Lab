@@ -29,27 +29,29 @@
             </tr>
 
             <c:forEach var="user" items="${users}">
+             
                 <tr>
-                <tc>${user.email}</tc>
-                <tc>${user.firstName}</tc>
-                <tc>${user.lastName}</tc>
-                <tc>${user.password}</tc>
-                <tc> <form method="POST" action="users">
-                        <input type="hidden" action="edit" name="${user.email}">
-                        <input type="submit" value="Edit">
+                <td>${user.email}</td>
+                <td>${user.firstName}</td>
+                <td>${user.lastName}</td>
+                <td>${user.password}</td>
+                <td> <form method="POST" action="users">
+                        <input type="hidden" name="action" value="edit">
+                        <input type="submit" value="edit">
                     </form>
-                
-                </tc>
-                <tc>
+                 
+                </td>
+                <td>
                     
                     <form method="POST" action="users">
-                        <input type="hidden" action="delete" name="${user.email}">
-                        <input type="submit" value="Edit">
+                        <input type="hidden" name=action value="delete">
+                        <input type="submit" value="delete">
                     </form>
                 
-                </tc>
-                <tc>Delete</tc>
-            </tr>
+                </td>
+                <td>Delete</td>
+                </tr>
+            
         </c:forEach>
         </table>
         <c:if test="${selectedUser == null}"> 
