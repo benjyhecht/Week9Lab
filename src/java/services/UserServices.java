@@ -26,6 +26,18 @@ public class UserServices {
         }    
     }
     
+    public boolean updateUser(String email, String firstName, String lastName, String password, String role, boolean active) {
+        return false;
+    }
+    
+    public boolean addUser(String email, String firstName, String lastName, String password, String role, boolean active){
+        return false;
+    }
+    
+    public boolean deleteUser(String email) {
+        return false;
+    }
+    
     public List<User> getAllUsers(){
         
         return null;
