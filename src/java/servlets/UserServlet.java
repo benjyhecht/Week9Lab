@@ -81,7 +81,7 @@ public class UserServlet extends HttpServlet {
             Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, e);
             request.setAttribute("message", "error");
         }
-        
+
         request.setAttribute("selectedUser", selectedUser);
         request.setAttribute("message", message);
 
@@ -94,7 +94,7 @@ public class UserServlet extends HttpServlet {
         List<User> users = us.getAllUsers();
 
         RoleServices rs = new RoleServices();
-        List<String> roles = rs.getAllRoles();
+        List<Role> roles = rs.getAllRoles();
 
         request.setAttribute("users", users);
         request.setAttribute("roles", roles);
