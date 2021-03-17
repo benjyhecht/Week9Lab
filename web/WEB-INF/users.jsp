@@ -34,24 +34,21 @@
                     <td>${user.email}</td>
                     <td>${user.firstName}</td>
                     <td>${user.lastName}</td>
-                    <td>${user.roleName}</td>
-                    <td> <form method="POST" action="user">
+                    <td>${user.role.roleName}</td>
+                    <td>
+                        <form method="POST" action="user">
                             <input type="hidden" name="action" value="edit">
                             <input type="submit" value="edit">
                             <input type="hidden" name="email" value="${user.email}">
                         </form>
-
                     </td>
                     <td>
-
                         <form method="POST" action="user">
                             <input type="hidden" name=action value="delete">
                             <input type="submit" value="delete">
                             <input type="hidden" name="email" value="${user.email}">
                         </form>
-
                     </td>
-                    <td>Delete</td>
                 </tr>
 
             </c:forEach>
@@ -65,14 +62,16 @@
                 <input type="password" class="details" name="password" placeholder="Password">
 
                 <select name="domain" class="details">
-                    <option value="Company Admin">Company Admin</option>
-                    <option value="System Admin">System Admin</option>
-                    <option value="Regular Admin">Regular Admin</option>
-
+                    <c:forEach var="roleChoice" items="${roles}">
+                        <option value="${roleChoice.roleId}">${roleChoice.roleName}</option>
+                    </c:forEach>
                 </select>
-
-                <input type="submit" value="add" class="save">
+                <input type="submit" value="add">
                 <input type="hidden" value="add" name="action">
+            </form>
+            <form>
+                <input type="submit" value="cancel">
+                <input type="hidden" value="cancel" name="action">
             </form>
         </c:if>
 
@@ -80,24 +79,28 @@
         <c:if test="${selectedUser != null}">
             <h1 class="edituser">Edit Users</h1>
 
-            <form action="user" method="post">
-                <input type="hidden" class="details" name="email" value=${selectedUser.email}>
-                <input type="text" class="details" name="fname" value=${selectedUser.firstName}>
-                <input type="text" class="details" name="lname" value=${selectedUser.lastName}>
-                <input type="password" class="details" name="password" value=${selectedUser.password}>
-                <input type="submit" value="save">
-                <input type="hidden" name="action" value="save">
-                
-            </form>
+        <tr><form action="user" method="post">
+            <input type="hidden" class="details" name="email" value=${selectedUser.email}>
+            <td><input type="text" class="details" name="fname" value=${selectedUser.firstName}></td>
+            <td><input type="text" class="details" name="lname" value=${selectedUser.lastName}></td>
+            <td><input type="password" class="details" name="password" value=${selectedUser.password}></td>
+            <td><select name="domain" class="details" selected="${selectedUser.role.roleName}">
+                    <c:forEach var="roleChoice" items="${roles}">
+                        <option value="${roleChoice.roleId}">${roleChoice.roleName}</option>
+                    </c:forEach>
+                </select> </td>
+            <td><input type="submit" value="save">
+                <input type="hidden" name="action" value="save"></td>
 
+        </form>
+        <form action="user" method="post">
+            <td><input type="submit" value="cancel">
+                <input type="hidden" name="action" value="cancel"></td>
+        </form>
+    </tr>
+</c:if>
 
-            <form action="user" method="post">
-                <input type="submit" value="cancel">
-                <input type="hidden" name="action" value="cancel">
-            </form>
-            </c:if>
-  
-            <br> ${message}
+<br> ${message}
 
-    </body>
+</body>
 </html>
